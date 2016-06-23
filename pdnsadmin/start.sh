@@ -22,9 +22,8 @@ mysqlcheck() {
   fi
 }
 
-mysqlcheck
-
 sed -i "s,%PDNS_STATS_URL%,${PDNS_STATS_URL}," /opt/pdnsadmin/config.py
+mysqlcheck
  
 # Start PowerDNS Admin
 echo "Starting PowerDNS Admin..."
