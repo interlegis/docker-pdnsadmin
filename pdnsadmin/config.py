@@ -6,13 +6,13 @@ WTF_CSRF_ENABLED = True
 SECRET_KEY = os.getenv('SECRET_KEY')
 BIND_ADDRESS = os.getenv('BIND_ADDRESS')
 PORT = int(os.getenv('BIND_PORT'))
-LOGIN_TITLE = "PDNS"
+LOGIN_TITLE = os.getenv('LOGIN_TITLE')
 
 # TIMEOUT - for large zones
-TIMEOUT = 10
+TIMEOUT = int(os.getenv('TIMEOUT'))
 
 # LOG CONFIG 
-LOG_LEVEL = 'DEBUG'
+LOG_LEVEL = os.getenv('LOG_LEVEL')
 LOG_FILE = 'logfile.log'
 
 # Upload
@@ -24,23 +24,25 @@ SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')
 SQLALCHEMY_TRACK_MODIFICATIONS = True
 
 # LDAP CONFIG
-#LDAP_TYPE = 'ldap' # use 'ad' for MS Active Directory
-#LDAP_URI = 'ldaps://your-ldap-server:636'
-#LDAP_USERNAME = 'cn=dnsuser,ou=users,ou=services,dc=duykhanh,dc=me'
-#LDAP_PASSWORD = 'dnsuser'
-#LDAP_SEARCH_BASE = 'ou=System Admins,ou=People,dc=duykhanh,dc=me'
-# Additional options only if LDAP_TYPE=ldap
-#LDAP_USERNAMEFIELD = 'uid'
-#LDAP_FILTER = '(objectClass=inetorgperson)'
+if os.getenv('LDAP_TYPE').lower() != 'none' and os.getenv('LDAP_URI') != '':
+  LDAP_TYPE = os.getenv('LDAP_TYPE').lower() # use 'ad' for MS Active Directory, 'ldap' otherwise
+  LDAP_URI = os.getenv('LDAP_URI')
+  LDAP_USERNAME = os.getenv('LDAP_USERNAME')
+  LDAP_PASSWORD = os.getenv('LDAP_PASSWORD')
+  LDAP_SEARCH_BASE = os.getenv('LDAP_SEARCHBASE')
+  # Additional options only if LDAP_TYPE=ldap
+  if os.getenv('LDAP_TYPE').lower() == 'ldap':
+    LDAP_USERNAMEFIELD = os.getenv('LDAP_USERNAMEFIELD')
+    LDAP_FILTER = os.getenv('LDAP_FILTER')
 
 #Default Auth
 BASIC_ENABLED = True
 SIGNUP_ENABLED = True
 
 # POWERDNS CONFIG
-PDNS_STATS_URL = 'http://10.1.10.134:8081/'
+PDNS_STATS_URL = %PDNS_STATS_URL%
 PDNS_API_KEY = os.getenv('PDNS_API_KEY')
-PDNS_VERSION = '3.4.1'
+PDNS_VERSION = os.getenv('PDNS_VERSION')
 
 # RECORDS ALLOWED TO EDIT
-RECORDS_ALLOW_EDIT = ['A', 'AAAA', 'CNAME', 'SPF', 'PTR', 'MX', 'TXT']
+RECORDS_ALLOW_EDIT = ['A', 'AAAA', 'CNAME', 'SPF', 'PTR', 'MX', 'TXT', 'NS']
