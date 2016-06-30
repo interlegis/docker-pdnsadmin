@@ -23,7 +23,6 @@ ENV BIND_ADDRESS="0.0.0.0" \
 
 RUN git clone https://github.com/ngoduykhanh/PowerDNS-Admin.git /opt/pdnsadmin \
  && cd /opt/pdnsadmin \
-# && git checkout new_ui \
  && pip install virtualenv \
  && virtualenv flask \
  && . ./flask/bin/activate \
