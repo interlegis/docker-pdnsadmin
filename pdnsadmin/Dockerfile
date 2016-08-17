@@ -26,6 +26,7 @@ RUN git clone https://github.com/ngoduykhanh/PowerDNS-Admin.git /opt/pdnsadmin \
  && pip install virtualenv \
  && virtualenv flask \
  && . ./flask/bin/activate \
+ && pip install mysql-python \ 
  && pip install -r requirements.txt 
 
 ADD config.py /opt/pdnsadmin/
