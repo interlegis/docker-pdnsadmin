@@ -28,4 +28,5 @@ mysqlcheck
 # Start PowerDNS Admin
 echo "Starting PowerDNS Admin..."
 
-/opt/pdnsadmin/run.py
+cd /opt/pdnsadmin
+gunicorn --workers=4 -b $BIND_ADDRESS:$BIND_PORT run:app
