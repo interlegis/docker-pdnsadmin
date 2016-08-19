@@ -1,11 +1,12 @@
 pdnsadmin:
-  build: pdnsadmin
+  #build: pdnsadmin
+  image: interlegis/pdnsadmin:latest
   links:
     - "mysql:mysql"
   ports:
     - "9393:9393"
   environment:
-    - PDNS_STATS_URL='http://10.1.10.134:8081/'
+    - PDNS_STATS_URL="http://10.1.10.134:8081"
     - PDNS_API_KEY=kTH0m8NUXP6ZdEQ1zRVJM2u5Ovcarj4hsKWiAD7bxyBplLtGI3
 
 mysql:
