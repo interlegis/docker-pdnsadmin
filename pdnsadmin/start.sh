@@ -29,4 +29,5 @@ mysqlcheck
 echo "Starting PowerDNS Admin..."
 
 cd /opt/pdnsadmin
+source ./flask/bin/activate
 gunicorn --workers=4 -b $BIND_ADDRESS:$BIND_PORT run:app
