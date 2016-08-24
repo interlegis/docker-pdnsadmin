@@ -19,7 +19,7 @@ ENV BIND_ADDRESS="0.0.0.0" \
     LDAP_SEARCH_BASE='' \
     LDAP_USERNAMEFIELD='uid' \
     LDAP_FILTER='(objectClass=inetorgperson)' \
-    PDNS_VERSION='3.4.7' 
+    PDNS_VERSION='4.0.1' 
 
 RUN git clone https://github.com/ngoduykhanh/PowerDNS-Admin.git /opt/pdnsadmin \
  && cd /opt/pdnsadmin \
