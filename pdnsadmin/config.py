@@ -45,4 +45,4 @@ PDNS_API_KEY = os.getenv('PDNS_API_KEY')
 PDNS_VERSION = os.getenv('PDNS_VERSION')
 
 # RECORDS ALLOWED TO EDIT
-RECORDS_ALLOW_EDIT = ['A', 'AAAA', 'CNAME', 'SPF', 'PTR', 'MX', 'TXT', 'NS', 'DS', 'SOA', 'SRV']
+RECORDS_ALLOW_EDIT = ['A', 'AAAA', 'CNAME', 'SPF', 'PTR', 'MX', 'TXT', 'NS', 'DS', 'SOA', 'SRV', 'CAA']

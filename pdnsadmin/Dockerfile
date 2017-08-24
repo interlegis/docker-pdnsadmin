@@ -1,8 +1,8 @@
-FROM debian:jessie
+FROM debian:stretch-slim
 
 RUN apt-get update \
- && DEBIAN_FRONTEND=noninteractive apt-get install -y git python-pip python-dev python-mysqldb libmysqlclient-dev libsasl2-dev libldap2-dev libssl-dev mysql-client \
- && apt-get clean
+ && DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y build-essential git python-pip python-dev python-mysqldb default-libmysqlclient-dev libsasl2-dev libldap2-dev libssl-dev mysql-client \
+ && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ENV BIND_ADDRESS="0.0.0.0" \
     BIND_PORT="9393" \
@@ -19,7 +19,7 @@ ENV BIND_ADDRESS="0.0.0.0" \
     LDAP_SEARCH_BASE='' \
     LDAP_USERNAMEFIELD='uid' \
     LDAP_FILTER='(objectClass=inetorgperson)' \
-    PDNS_VERSION='4.0.1' 
+    PDNS_VERSION='4.0.4' 
 
 RUN git clone https://github.com/ngoduykhanh/PowerDNS-Admin.git /opt/pdnsadmin \
  && cd /opt/pdnsadmin \
