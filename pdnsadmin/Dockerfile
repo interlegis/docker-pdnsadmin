@@ -21,7 +21,7 @@ ENV BIND_ADDRESS="0.0.0.0" \
     LDAP_FILTER='(objectClass=inetorgperson)' \
     PDNS_VERSION='4.0.4' 
 
-RUN git clone https://github.com/ngoduykhanh/PowerDNS-Admin.git /opt/pdnsadmin \
+RUN git clone https://github.com/interlegis/PowerDNS-Admin.git /opt/pdnsadmin \
  && cd /opt/pdnsadmin \
  && pip install virtualenv \
  && virtualenv flask \
